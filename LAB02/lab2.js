@@ -10,3 +10,13 @@ const choices = ['ROCK', 'PAPER', 'SCISSORS'];
 // Initialize the prompt for user input
 prompt.start();
 
+prompt.get(['userSelection'], function (err, result) {
+  if (err) {
+    console.error('An error occurred while retrieving input.');
+    return;
+  }
+
+  // Convert user input to uppercase for consistency
+  const userSelection = result.userSelection.toUpperCase(); 
+  console.log(`You selected: ${userSelection}`);
+});
