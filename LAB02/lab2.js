@@ -18,5 +18,18 @@ prompt.get(['userSelection'], function (err, result) {
 
   // Convert user input to uppercase for consistency
   const userSelection = result.userSelection.toUpperCase(); 
-  console.log(`You selected: ${userSelection}`);
+  if (!options.includes(playerChoice)) {
+    console.log("Invalid input. Please choose ROCK, PAPER, or SCISSORS.\n");
+    return;
+  }
+const randValue = Math.random();
+  let cpuChoice;
+
+  if (randValue <= 0.34) {
+    cpuChoice = 'PAPER';
+  } else if (randValue <= 0.67) {
+    cpuChoice = 'SCISSORS';
+  } else {
+    cpuChoice = 'ROCK';
+  }
 });
