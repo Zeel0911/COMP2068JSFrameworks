@@ -1,7 +1,64 @@
+/* Apply EB Garamond font to the whole site */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  font-family: 'EB Garamond', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #212529;
+  padding-bottom: 60px;
 }
-h1 {
-  color: #333;
+
+/* Navbar tweaks */
+.navbar {
+  font-size: 18px;
+}
+
+/* Active link highlight */
+.nav-link.active,
+.nav-link:hover {
+  color: #00B7FF !important;
+}
+
+/* Custom header style */
+h1, h2, h3 {
+  font-weight: 600;
+  color: #343a40;
+}
+
+/* Footer style */
+footer {
+  background-color: #e9ecef;
+  color: #495057;
+  font-size: 16px;
+}
+
+footer a {
+  color: #0077b5;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Font Awesome icon spacing */
+footer i {
+  margin-right: 5px;
+}
+
+/* Section spacing */
+main {
+  padding: 20px;
+}
+
+/* Container spacing fix on smaller screens */
+@media (max-width: 576px) {
+  body {
+    font-size: 16px;
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+  }
 }
