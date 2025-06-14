@@ -8,24 +8,24 @@ body {
   padding-bottom: 60px;
 }
 
-/* Navbar tweaks */
+
 .navbar {
   font-size: 18px;
 }
 
-/* Active link highlight */
+
 .nav-link.active,
 .nav-link:hover {
   color: #e9f0f3 !important;
 }
 
-/* Custom header style */
+
 h1, h2, h3 {
   font-weight: 600;
   color: #343a40;
 }
 
-/* Footer style */
+
 footer {
   background-color: #e9ecef;
   color: #495057;
@@ -44,12 +44,11 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Font Awesome icon spacing */
 footer i {
   margin-right: 5px;
 }
 
-/* Section spacing */
+
 main {
   padding: 20px;
 }
@@ -65,7 +64,7 @@ main {
   }
 }
 .my-photo-block {
-  width: 250px;  /* Change size as needed */
+  width: 250px;  
   height: 250px;
   overflow: hidden;
   border-radius: 8px;
