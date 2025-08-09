@@ -6,7 +6,11 @@ const Task = require('../models/Task');
 router.get('/', async (req, res, next) => {
   try {
     const tasks = await Task.find();
-    res.render('index', { title: 'My To-Do List', tasks });
+    res.render('index', { 
+      title: 'My To-Do List', 
+      tasks,
+      currentYear: new Date().getFullYear()
+    });
   } catch (err) {
     next(err);
   }
@@ -14,7 +18,10 @@ router.get('/', async (req, res, next) => {
 
 // GET Add Task Form
 router.get('/tasks/new', (req, res) => {
-  res.render('new-task', { title: 'Add New Task' });
+  res.render('new-task', { 
+    title: 'Add New Task',
+    currentYear: new Date().getFullYear()
+  });
 });
 
 // POST Create Task
@@ -33,7 +40,11 @@ router.get('/tasks/:id/edit', async (req, res, next) => {
   try {
     const task = await Task.findById(req.params.id);
     if (!task) return res.status(404).send('Task not found');
-    res.render('edit-task', { title: 'Edit Task', task });
+    res.render('edit-task', { 
+      title: 'Edit Task', 
+      task,
+      currentYear: new Date().getFullYear()
+    });
   } catch (err) {
     next(err);
   }
