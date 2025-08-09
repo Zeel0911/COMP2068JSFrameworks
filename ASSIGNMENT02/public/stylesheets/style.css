@@ -1,8 +1,28 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  color: #343a40;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+footer p {
+  text-align: center;
+  padding: 10px;
+  background-color: #343a40;
+  color: white;
+}
+nav {
+  background-color: #343a40;
+}
+nav a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
 }
