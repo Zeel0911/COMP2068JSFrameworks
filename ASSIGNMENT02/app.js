@@ -9,7 +9,7 @@ require('./config/database');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const tasksRouter = require('./routes/tasks');
+const tasksRouter = require('./routes/new-tasks');
 
 var app = express();
 
