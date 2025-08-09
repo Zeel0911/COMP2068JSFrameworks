@@ -4,7 +4,7 @@ const taskSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: String,
     completed: { type: Boolean, default: false },
-    category: String, // for your “Work, School” feature
+    category: String, 
     createdAt: { type: Date, default: Date.now }
 });
 
