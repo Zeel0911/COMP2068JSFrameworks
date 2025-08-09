@@ -1,12 +1,15 @@
-require('./config/database');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const methodOverride = require('method-override');
+
+require('./config/database');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const tasksRouter = require('./routes/tasks');
 
 var app = express();
 
@@ -20,8 +23,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// method-override middleware (after body parsers)
+app.use(methodOverride('_method'));
+
+// Mount routers
+app.use('/', indexRouter);         // Keep this for your home page or other index routes
 app.use('/users', usersRouter);
+app.use('/tasks', tasksRouter);    // Mount tasks routes at /tasks
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

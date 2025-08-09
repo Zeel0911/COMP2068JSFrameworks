@@ -25,7 +25,7 @@
     <h1 class="text-center mb-4">{{title}}</h1>
 
     <!-- Add Task Form -->
-    <form action="/tasks/add" method="POST" class="d-flex mb-4">
+    <form action="/tasks" method="POST" class="d-flex mb-4">
       <input type="text" name="title" class="form-control me-2" placeholder="Enter new task" required>
       <button class="btn btn-primary">Add Task</button>
     </form>
@@ -37,8 +37,10 @@
           <li class="list-group-item d-flex justify-content-between align-items-center">
             {{this.title}}
             <span>
-              <a href="/tasks/edit/{{this._id}}" class="btn btn-sm btn-warning">Edit</a>
-              <a href="/tasks/delete/{{this._id}}" class="btn btn-sm btn-danger">Delete</a>
+              <a href="/tasks/{{this._id}}/edit" class="btn btn-sm btn-warning me-2">Edit</a>
+              <form action="/tasks/{{this._id}}?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+              </form>
             </span>
           </li>
         {{/each}}
@@ -50,7 +52,7 @@
 
   <!-- Footer -->
   <footer class="bg-dark text-light text-center py-3 mt-5">
-    <small>&copy; {{year}} To-Do List App</small>
+    <small>&copy; {{currentYear}} To-Do List App</small>
   </footer>
 
   <!-- Bootstrap JS -->
