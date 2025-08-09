@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
 
-// GET / - Show all tasks (home page)
+
 router.get('/', async (req, res, next) => {
   try {
     const tasks = await Task.find();
@@ -12,7 +12,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET /tasks/new - Show form to add new task
 router.get('/tasks/new', (req, res) => {
   res.render('new-task', { title: 'Add New Task' });
 });
@@ -34,7 +33,6 @@ router.post('/tasks', async (req, res, next) => {
   }
 });
 
-// GET /tasks/:id/edit - Show edit form
 router.get('/tasks/:id/edit', async (req, res, next) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -45,7 +43,6 @@ router.get('/tasks/:id/edit', async (req, res, next) => {
   }
 });
 
-// PUT /tasks/:id - Update a task
 router.put('/tasks/:id', async (req, res, next) => {
   try {
     const { title, category, completed } = req.body;
@@ -60,7 +57,6 @@ router.put('/tasks/:id', async (req, res, next) => {
   }
 });
 
-// DELETE /tasks/:id - Delete a task
 router.delete('/tasks/:id', async (req, res, next) => {
   try {
     await Task.findByIdAndDelete(req.params.id);
