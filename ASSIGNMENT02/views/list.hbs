@@ -1,0 +1,24 @@
+<h1>My Tasks</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each tasks}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{category}}</td>
+            <td>{{#if completed}}✅{{else}}❌{{/if}}</td>
+            <td>
+                <a href="/tasks/edit/{{_id}}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/tasks/delete/{{_id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
