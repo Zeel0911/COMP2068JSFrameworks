@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Task = require('../models/Task');
 
-// GET Home - list all tasks
+// GET / - Show all tasks (home page)
 router.get('/', async (req, res, next) => {
   try {
     const tasks = await Task.find();
@@ -12,23 +12,29 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET Add Task Form
+// GET /tasks/new - Show form to add new task
 router.get('/tasks/new', (req, res) => {
   res.render('new-task', { title: 'Add New Task' });
 });
 
-// POST Create Task
+// POST /tasks - Create new task
 router.post('/tasks', async (req, res, next) => {
   try {
     const { title, category } = req.body;
-    await Task.create({ title, category });
+    if (!title || title.trim() === '') {
+      return res.render('new-task', {
+        title: 'Add New Task',
+        error: 'Task title is required',
+      });
+    }
+    await Task.create({ title: title.trim(), category: category ? category.trim() : '' });
     res.redirect('/');
   } catch (err) {
     next(err);
   }
 });
 
-// GET Edit Task Form
+// GET /tasks/:id/edit - Show edit form
 router.get('/tasks/:id/edit', async (req, res, next) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -39,8 +45,8 @@ router.get('/tasks/:id/edit', async (req, res, next) => {
   }
 });
 
-// POST Update Task
-router.post('/tasks/:id', async (req, res, next) => {
+// PUT /tasks/:id - Update a task
+router.put('/tasks/:id', async (req, res, next) => {
   try {
     const { title, category, completed } = req.body;
     await Task.findByIdAndUpdate(req.params.id, {
@@ -54,8 +60,8 @@ router.post('/tasks/:id', async (req, res, next) => {
   }
 });
 
-// POST Delete Task
-router.post('/tasks/:id/delete', async (req, res, next) => {
+// DELETE /tasks/:id - Delete a task
+router.delete('/tasks/:id', async (req, res, next) => {
   try {
     await Task.findByIdAndDelete(req.params.id);
     res.redirect('/');
